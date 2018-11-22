@@ -8,3 +8,5 @@ INSTALL INSTRUCTIONS
 3) Create  enviroment file `.env` in root folder.
 
 4) Check `env.sample` for the sample.
+
+5) Start with `npm start`.
