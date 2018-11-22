@@ -1,6 +1,6 @@
 /*
 * Entry point of the application
-* Load the inital configs from core/app
+* Load the initial configs from core/app
 */
 const { app } = require('./core/app');
 
