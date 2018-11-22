@@ -4,7 +4,7 @@
 const get = async (req, res, next) => {
   try {
     /*
-    * raw:true retruns lightweight object
+    * raw:true returns lightweight object
     */
     const result = await req.app.get('models').User.findAll({
       raw: true,
@@ -33,7 +33,27 @@ const create = async (req, res, next) => {
     next(error);
   }
 };
+/*
+* Edit the user with id
+*/
+const edit = async (req, res, next) => {
+  try {
+    await req.app.get('models').User.update({
+      name: req.body.name,
+      email: req.body.email,
+    }, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.json({
+      message: 'Updated',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
-  get, create,
+  get, create, edit,
 };
