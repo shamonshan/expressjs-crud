@@ -1,5 +1,11 @@
+/*
+* Get the list of users
+*/
 const get = async (req, res, next) => {
   try {
+    /*
+    * raw:true retruns lightweight object
+    */
     const result = await req.app.get('models').User.findAll({
       raw: true,
     });
@@ -11,11 +17,14 @@ const get = async (req, res, next) => {
     next(error);
   }
 };
+/*
+* Create a new user
+*/
 const create = async (req, res, next) => {
   try {
     const result = await req.app.get('models').User.create({
-      name: req.query.name,
-      email: req.query.email,
+      name: req.body.name,
+      email: req.body.email,
     });
     res.json({
       user: result,
